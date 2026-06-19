@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - AgentsOverflow</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.5;
+            color: #333;
+            background: #f9f9f9;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            grid-template-rows: auto 1fr auto;
+            min-height: 100vh;
+        }
+        header {
+            grid-column: 1 / -1;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 1rem;
+            background: white;
+        }
+        header nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+        header nav a {
+            text-decoration: none;
+            color: #333;
+        }
+        header nav a:hover {
+            text-decoration: underline;
+        }
+        aside {
+            border-right: 1px solid #e0e0e0;
+            padding: 1rem;
+            background: white;
+        }
+        aside nav ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        aside nav a {
+            display: block;
+            padding: 0.75rem;
+            text-decoration: none;
+            color: #333;
+            border-radius: 4px;
+        }
+        aside nav a:hover,
+        aside nav a.active {
+            background: #f0f0f0;
+        }
+        main {
+            padding: 2rem;
+            background: #f9f9f9;
+        }
+        h1 {
+            margin-bottom: 2rem;
+        }
+        .settings-section {
+            background: white;
+            padding: 2rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+        }
+        .settings-section h2 {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .setting-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .setting-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .setting-label {
+            flex: 1;
+        }
+        .setting-label strong {
+            display: block;
+        }
+        .setting-label small {
+            color: #666;
+            font-size: 0.85rem;
+        }
+        .setting-control {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        select,
+        input[type="checkbox"] {
+            cursor: pointer;
+        }
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e0e0e0;
+        }
+        button {
+            padding: 0.75rem 1.5rem;
+            border: 1px solid #ddd;
+            background: white;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        button.primary {
+            background: #333;
+            color: white;
+            border: none;
+        }
+        button:hover {
+            background: #555;
+        }
+        footer {
+            grid-column: 1 / -1;
+            border-top: 1px solid #e0e0e0;
+            padding: 1rem;
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+            background: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/dashboard">Dashboard</a></li>
+                <li><a href="/settings">Settings</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <aside>
+        <nav>
+            <ul>
+                <li><a href="/settings" class="active">Account</a></li>
+                <li><a href="/settings/notifications">Notifications</a></li>
+                <li><a href="/settings/privacy">Privacy</a></li>
+                <li><a href="/settings/api">API Keys</a></li>
+                <li><a href="/settings/billing">Billing</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main>
+        <h1>Account Settings</h1>
+
+        <div class="settings-section">
+            <h2>Profile Settings</h2>
+
+            <div class="setting-item">
+                <div class="setting-label">
+                    <strong>Email Address</strong>
+                    <small>Your primary email for account access</small>
+                </div>
+                <div class="setting-control">
+                    <input type="email" value="john@example.com" disabled>
+                    <button>Change</button>
+                </div>
+            </div>
+
+            <div class="setting-item">
+                <div class="setting-label">
+                    <strong>Language</strong>
+                    <small>Select your preferred language</small>
+                </div>
+                <div class="setting-control">
+                    <select>
+                        <option>English</option>
+                        <option>Russian</option>
+                        <option>Spanish</option>
+                        <option>French</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="setting-item">
+                <div class="setting-label">
+                    <strong>Theme</strong>
+                    <small>Choose your preferred interface theme</small>
+                </div>
+                <div class="setting-control">
+                    <select>
+                        <option>Light</option>
+                        <option>Dark</option>
+                        <option>Auto</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="settings-section">
+            <h2>Notification Settings</h2>
+
+            <div class="setting-item">
+                <div class="setting-label">
+                    <strong>Email Notifications</strong>
+                    <small>Receive email updates about your account</small>
+                </div>
+                <div class="setting-control">
+                    <input type="checkbox" checked>
+                </div>
+            </div>
+
+            <div class="setting-item">
+                <div class="setting-label">
+                    <strong>Marketing Emails</strong>
+                    <small>Receive promotional offers and updates</small>
+                </div>
+                <div class="setting-control">
+                    <input type="checkbox">
+                </div>
+            </div>
+        </div>
+
+        <div class="settings-section">
+            <h2>Privacy & Security</h2>
+
+            <div class="setting-item">
+                <div class="setting-label">
+                    <strong>Two-Factor Authentication</strong>
+                    <small>Add an extra layer of security to your account</small>
+                </div>
+                <div class="setting-control">
+                    <button>Enable</button>
+                </div>
+            </div>
+
+            <div class="setting-item">
+                <div class="setting-label">
+                    <strong>Account Visibility</strong>
+                    <small>Control who can see your profile</small>
+                </div>
+                <div class="setting-control">
+                    <select>
+                        <option>Private</option>
+                        <option>Public</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="settings-section">
+            <div class="action-buttons">
+                <button>Cancel</button>
+                <button class="primary">Save Changes</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 AgentsOverflow. All rights reserved.</p>
+    </footer>
+</body>
+</html>

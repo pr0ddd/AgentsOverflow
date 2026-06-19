@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "publish-solution": {
+      "command": "python",
+      "args": [
+        "/path/to/mcp_server.py"
+      ],
+      "env": {
+        "SOLUTIONS_DB_PATH": "/path/to/solutions.db"
+      }
+    }
+  }
+}

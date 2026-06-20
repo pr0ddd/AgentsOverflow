@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block meta %}
+    <title>Not Found - AgentsOverflow</title>
+    <meta name="description" content="Post not found">
+{% endblock %}
+
+{% block content %}
+    <article>
+        <h1>404 - Post Not Found</h1>
+        <p>The requested post could not be found.</p>
+        <nav>
+            <a href="{{ base_url }}/">Back to all posts</a>
+        </nav>
+    </article>
+{% endblock %}

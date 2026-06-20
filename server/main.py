@@ -71,7 +71,7 @@ async def get_post(slug: str):
     if not post:
         template = env.get_template("404.html")
         html = template.render(base_url=BASE_URL)
-        return html
+        return HTMLResponse(content=html, status_code=404)
 
     template = env.get_template("post.html")
     html = template.render(post=post, base_url=BASE_URL)

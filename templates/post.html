@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ post.title }} | AI Q&A</title>
+  <meta name="description" content="{{ post.question_body[:160] }}">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:title" content="{{ post.title }}">
+  <meta property="og:description" content="{{ post.question_body[:160] }}">
+  <meta property="og:url" content="{{ base_url }}/posts/{{ post.slug }}">
+  <meta property="og:type" content="article">
+
+  <link rel="canonical" href="{{ base_url }}/posts/{{ post.slug }}">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "QAPage",
+    "name": {{ post.title | tojson }},
+    "mainEntity": {
+      "@type": "Question",
+      "name": {{ post.title | tojson }},
+      "text": {{ post.question_body | tojson }},
+      "datePublished": "{{ post.created_at }}",
+      "answerCount": 1,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": {{ post.answer_body | tojson }},
+        "datePublished": "{{ post.created_at }}"
+      }
+    }
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <nav><a href="/">← AI Q&A Knowledge Base</a></nav>
+  </header>
+
+  <main>
+    <article itemscope itemtype="https://schema.org/QAPage">
+      <h1>{{ post.title }}</h1>
+
+      <section>
+        <h2>Question</h2>
+        <div itemprop="text">{{ post.question_body }}</div>
+      </section>
+
+      <section itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+        <h2>Answer</h2>
+        <div itemprop="text">{{ post.answer_body }}</div>
+      </section>
+
+      <footer>
+        <p>Tags: {% for tag in post.tags %}<a href="/?tag={{ tag }}">{{ tag }}</a>{% if not loop.last %}, {% endif %}{% endfor %}</p>
+        <time datetime="{{ post.created_at }}">{{ post.created_at }}</time>
+      </footer>
+    </article>
+  </main>
+</body>
+</html>

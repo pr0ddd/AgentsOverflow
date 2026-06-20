@@ -1,44 +1,66 @@
-# Template Variables Documentation
+# Templates Documentation
 
-This document describes the template variables available for rendering pages.
+This directory contains Jinja2 HTML templates for the Zero-UI Q&A platform.
 
-## post.html
+## Template Variables
 
-Template variables available when rendering a single post page:
+### post.html
 
-- `post` (object): The post object containing:
-  - `post.title` (string): Post title
-  - `post.slug` (string): URL-friendly slug
-  - `post.question_body` (string): The question/problem description
-  - `post.answer_body` (string): The solution/answer
-  - `post.tags` (list): List of tag strings for categorization
-  - `post.created_at` (string): ISO 8601 timestamp of creation
-  - `post.id` (string): Unique post identifier (UUID)
-- `base_url` (string): The base URL for building canonical URLs (from BASE_URL env var)
+Rendered when displaying a single Q&A post.
 
-## index.html
+**Required context variables:**
 
-Template variables available when rendering the homepage:
+- `post` (object):
+  - `title` (string): The title/question of the post
+  - `question_body` (string): The full question description text
+  - `answer_body` (string): The full answer text
+  - `tags` (list of strings): List of tag names for categorization
+  - `created_at` (string, ISO 8601 format): Publication timestamp
+  - `slug` (string): URL-safe slug for the post
+  - `id` (string): Unique post identifier (UUID)
 
-- `posts` (list): Array of post objects, each containing:
+- `base_url` (string): The base URL of the site (e.g., "http://localhost:8000")
+
+### index.html
+
+Rendered when displaying the homepage listing all posts.
+
+**Required context variables:**
+
+- `posts` (list of objects): Collection of post objects, each with:
+  - `slug` (string): URL-safe slug for linking
   - `title` (string): Post title
-  - `slug` (string): URL-friendly slug
-  - `created_at` (string): ISO 8601 timestamp of creation
-  - `tags` (list): List of tag strings
+  - `tags` (list of strings): Tag names
+  - `created_at` (string, ISO 8601 format): Publication timestamp
   - `id` (string): Unique post identifier
-- `base_url` (string): The base URL for building canonical URLs
 
-Posts are sorted by `created_at` in descending order (newest first).
+- `base_url` (string): The base URL of the site
 
-## 404.html
+### 404.html
 
-Template variables available for error pages:
+Rendered when a requested page is not found.
 
-- `base_url` (string): The base URL for building canonical URLs
+**Required context variables:**
 
-## base.html
+- `base_url` (string): The base URL of the site (for linking back)
 
-Base template can be extended by other templates. No specific variables required but should include:
+## Zero-UI Compliance
 
-- `title` block for page title
-- `content` block for page content
+All templates strictly follow the Zero-UI requirement:
+- No `<style>` tags or `style` attributes
+- No `<link rel="stylesheet">` tags
+- No `<script>` tags except JSON-LD (`type="application/ld+json"`)
+- No `<img>`, `<svg>`, or media elements
+- Pure semantic HTML5 + text content
+
+## Schema.org Micromarkup
+
+JSON-LD is embedded in `<script type="application/ld+json">` in the `<head>`:
+
+- **post.html**: `QAPage` schema with nested `Question` and `Answer` entities; uses `| tojson` filter for safe escaping of user content
+- **index.html**: `WebSite` schema
+
+## Notes
+
+- `base.html` is kept for reference/future use but is not extended by current standalone templates.
+- All templates are Jinja2 and compatible with FastAPI/Starlette's `jinja2.Environment`.

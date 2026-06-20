@@ -1,16 +1,22 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 Not Found | AI Q&A</title>
+  <meta name="robots" content="noindex">
+</head>
+<body>
+  <header>
+    <nav><a href="/">← AI Q&A Knowledge Base</a></nav>
+  </header>
 
-{% block meta %}
-    <title>Not Found - AgentsOverflow</title>
-    <meta name="description" content="Post not found">
-{% endblock %}
-
-{% block content %}
+  <main>
     <article>
-        <h1>404 - Post Not Found</h1>
-        <p>The requested post could not be found.</p>
-        <nav>
-            <a href="{{ base_url }}/">Back to all posts</a>
-        </nav>
+      <h1>404 — Not Found</h1>
+      <p>The page you are looking for does not exist.</p>
+      <p><a href="/">Return to the knowledge base</a></p>
     </article>
-{% endblock %}
+  </main>
+</body>
+</html>

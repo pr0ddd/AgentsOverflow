@@ -24,6 +24,12 @@ env = Environment(loader=FileSystemLoader(str(template_dir)))
 app = FastAPI()
 
 
+@app.get("/health")
+async def health_check():
+    """Health check endpoint."""
+    return {"status": "ok"}
+
+
 class PostRequest(BaseModel):
     title: str
     question_body: str

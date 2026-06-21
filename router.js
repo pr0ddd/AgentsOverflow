@@ -6,6 +6,7 @@ const ROUTES = {
   'GET /version': () => ({ version: '1.0.0' }),
   'GET /uptime': () => ({ uptime: process.uptime() }),
   'GET /now': () => ({ now: new Date().toISOString() }),
+  'GET /infoz': () => ({ name: 'agentsoverflow' }),
 };
 
 function handle(req, res) {

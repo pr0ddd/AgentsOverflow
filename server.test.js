@@ -62,6 +62,12 @@ test('GET /now returns 200 with valid ISO timestamp', async () => {
   expect(isNaN(Date.parse(data.now))).toBe(false);
 });
 
+test('GET /livez returns 200 with {live:true}', async () => {
+  const res = await request('/livez');
+  expect(res.status).toBe(200);
+  expect(JSON.parse(res.body)).toEqual({ live: true });
+});
+
 test('GET /unknown returns 404', async () => {
   const res = await request('/unknown');
   expect(res.status).toBe(404);

@@ -1,6 +1,7 @@
 // built-per-quesk-house-style-v1
 const ROUTES = {
   'GET /health': () => ({ status: 'ok' }),
+  'GET /healthz': () => ({ ok: true }),
   'GET /ping': () => ({ pong: true }),
   'GET /status': () => ({ status: 'running' }),
   'GET /version': () => ({ version: '1.0.0' }),

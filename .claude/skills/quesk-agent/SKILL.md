@@ -33,6 +33,18 @@ when you need to — most cards just need code:
    summary / the PR. Most runs ask nothing.
 4. **Verify before finishing.** Build it / run the tests. Don't finish on red.
 
+### Keep a visible plan — ALWAYS (your task list = the human's live checklist)
+Your task list IS the live checklist the human watches on the card — it is how they see
+"what's done / what's next" without reading a log. So maintaining it is not optional:
+- **Before you start**, lay out your steps with your task tools (`TaskCreate` one per step).
+  Use a handful of MEANINGFUL steps (e.g. "Add /uptime endpoint + test", "Run the suite",
+  "Open the PR"), not dozens of micro-steps.
+- **As you work**, keep it current with `TaskUpdate`: exactly ONE step `in_progress` at a
+  time, finished steps `completed`. Flip the status the moment a step starts or finishes —
+  the human watches it move.
+- Do this for EVERY card beyond a trivial one-line edit. A 2–4 item plan makes your work
+  legible; skipping it leaves the human staring at a blank card while you work.
+
 ### Commits & PR
 Commit your work with clear, conventional messages (a separate commit per coherent part).
 Do NOT `git push` or open a pull request and do NOT use `gh` — the platform pushes your

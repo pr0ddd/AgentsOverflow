@@ -47,11 +47,11 @@ test('GET /version returns 200 with version field', async () => {
   expect(JSON.parse(res.body)).toHaveProperty('version');
 });
 
-test('GET /uptime returns 200 with numeric uptime', async () => {
+test('GET /uptime returns 200 with numeric uptimeSeconds', async () => {
   const res = await request('/uptime');
   expect(res.status).toBe(200);
   const data = JSON.parse(res.body);
-  expect(typeof data.uptime).toBe('number');
+  expect(typeof data.uptimeSeconds).toBe('number');
 });
 
 test('GET /now returns 200 with valid ISO timestamp', async () => {

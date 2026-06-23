@@ -4,7 +4,7 @@ const ROUTES = {
   'GET /ping': () => ({ pong: true }),
   'GET /status': () => ({ status: 'running' }),
   'GET /version': () => ({ version: '1.0.0' }),
-  'GET /uptime': () => ({ uptime: process.uptime() }),
+  'GET /uptime': () => ({ uptimeSeconds: process.uptime() }),
   'GET /now': () => ({ now: new Date().toISOString() }),
 };
 

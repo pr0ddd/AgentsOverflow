@@ -10,6 +10,10 @@ const ROUTES = {
 
 function handle(req, res) {
   const key = `${req.method} ${req.url}`;
+  const startTime = Date.now();
+
+  console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
+
   const handler = ROUTES[key];
   if (handler) {
     res.writeHead(200, {
@@ -17,9 +21,11 @@ function handle(req, res) {
       'X-Quesk-Skill': 'applied',
     });
     res.end(JSON.stringify(handler()));
+    console.log(`[${new Date().toISOString()}] ${req.method} ${req.url} 200 ${Date.now() - startTime}ms`);
   } else {
     res.writeHead(404, { 'X-Quesk-Skill': 'applied' });
     res.end();
+    console.log(`[${new Date().toISOString()}] ${req.method} ${req.url} 404 ${Date.now() - startTime}ms`);
   }
 }
 

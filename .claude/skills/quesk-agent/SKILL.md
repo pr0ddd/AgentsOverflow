@@ -33,6 +33,17 @@ when you need to — most cards just need code:
    summary / the PR. Most runs ask nothing.
 4. **Verify before finishing.** Build it / run the tests. Don't finish on red.
 
+### Keep a visible plan (your todo list = the human's live checklist)
+As soon as you've worked out the steps, lay them out with your todo tool (`TodoWrite`)
+and keep it current as you go: exactly one step `in_progress` at a time, finished steps
+`completed`. Your todo list is shown to the human as a LIVE checklist on the card — it is
+how they see "what's done / what's next" without reading a log. So:
+- Use a handful of MEANINGFUL steps (e.g. "Add /uptime endpoint + test", "Run the suite",
+  "Open PR"), not dozens of micro-steps.
+- Update it the moment a step starts or finishes — the human watches it move.
+- Even for a small card, a 2–4 item plan makes your work legible. Maintain it for every
+  card that takes more than a trivial single edit.
+
 ### Commits & PR
 Commit your work with clear, conventional messages (a separate commit per coherent part).
 Do NOT `git push` or open a pull request and do NOT use `gh` — the platform pushes your
